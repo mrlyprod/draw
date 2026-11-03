@@ -2,8 +2,6 @@ import type { Ink, Pen } from "@mrlyprod/draw";
 import { canvas, ink } from "@mrlyprod/draw";
 import { dark, light, tinted } from "./theme.ts";
 
-/* TYPES */
-
 export type Size = [number, number];
 
 export type Unit = { default: (options: { module_or_path: string }) => Promise<unknown> };
@@ -64,15 +62,11 @@ const STILL = "(prefers-reduced-motion: reduce)";
 const DARK = "(prefers-color-scheme: dark)";
 const calm = () => document.documentElement.dataset.motion === "reduce" || matchMedia(STILL).matches;
 
-/* SIZE */
-
 export function fit(box: number, dpr: number, cap: number, [w, h]: Size = SIZE): Size {
   const long = Math.max(w, h);
   const scale = Math.min((box * dpr) / w, Math.min(cap, long) / long);
   return [Math.max(1, Math.round(w * scale)), Math.max(1, Math.round(h * scale))];
 }
-
-/* QUEUE */
 
 export function queue<T>({
   near,
@@ -127,8 +121,6 @@ export function queue<T>({
   };
 }
 
-/* INK */
-
 let table: Table = { figures: {}, units: {}, plates: [] };
 
 export const inked = (theme: "dark" | "light", accent?: string, link?: string) =>
@@ -147,8 +139,6 @@ function look(): Shade {
   if (shade?.key !== key) shade = { key, ink: inked(theme, accent, link) };
   return shade;
 }
-
-/* UNITS */
 
 const opened = new Map<string, Promise<unknown>>();
 
@@ -182,8 +172,6 @@ function load(name: string): Promise<Figure> {
   }
   return modules.get(name)!;
 }
-
-/* DRAW */
 
 const hosts = new Map<HTMLElement, Host>();
 let scratch: HTMLCanvasElement | null = null;
@@ -278,8 +266,6 @@ function skip(host: HTMLElement) {
   host.removeAttribute("aria-busy");
   line!.remove(host);
 }
-
-/* WATCH */
 
 let eye: IntersectionObserver | null = null;
 

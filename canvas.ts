@@ -4,8 +4,6 @@ import { fold, type Pixels } from "./pixels.ts";
 
 const TAU = 2 * Math.PI;
 
-/* PAINT */
-
 const css = (c: Color) => `rgba(${c[0]},${c[1]},${c[2]},${c[3] / 255})`;
 
 let scratch: OffscreenCanvas | undefined;
@@ -26,8 +24,6 @@ function surface(pixels: Pixels): OffscreenCanvas {
   scratch.getContext("2d")!.putImageData(new ImageData(bytes, w, h), 0, 0);
   return scratch;
 }
-
-/* CANVAS */
 
 export function canvas(
   ctx: CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D,

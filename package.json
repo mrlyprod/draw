@@ -18,11 +18,9 @@
   },
   "files": [
     "*.ts",
-    "palette.gen.js",
-    "!*.test.ts"
+    "palette.gen.js"
   ],
   "scripts": {
-    "test": "bun test",
     "types": "tsc -p tsconfig.json",
     "lint": "biome ci .",
     "fix": "biome check --write ."

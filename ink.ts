@@ -1,7 +1,5 @@
 import { CLEAR } from "./frame.ts";
 
-/* TYPES */
-
 export type Color = [number, number, number, number];
 
 export type Swatch = string | ArrayLike<number> | { r: number; g: number; b: number; a?: number };
@@ -46,8 +44,6 @@ export type Ink = Readonly<Record<Name, Color>> & {
   Ramp: Ramps;
 };
 
-/* COLOR */
-
 const byte = (v: number) => {
   const r = Math.round(v);
   return r > 0 ? Math.min(r, 255) : 0;
@@ -71,8 +67,6 @@ function color(swatch: Swatch, name: string): Color {
   throw new Error(`ink: ${name} is not a color: ${value}`);
 }
 
-/* MIXING */
-
 export function mix(a: Color, b: Color, t: number): Color {
   const s = clamp(t);
   const lerp = (x: number, y: number) => byte(x + (y - x) * s);
@@ -82,8 +76,6 @@ export function mix(a: Color, b: Color, t: number): Color {
 export function fade(c: Color, alpha: number): Color {
   return [c[0], c[1], c[2], byte(255 * clamp(alpha))];
 }
-
-/* RAMP */
 
 export class Ramp {
   stops: Color[];
@@ -103,8 +95,6 @@ export class Ramp {
     return mix(this.stops[i], this.stops[i + 1], s - i);
   }
 }
-
-/* INK */
 
 export function ink(palette: Palette): Ink {
   const out = {} as Record<Name, Color>;

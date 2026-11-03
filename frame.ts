@@ -1,8 +1,6 @@
 import type { Color } from "./ink.ts";
 import type { Pixels } from "./pixels.ts";
 
-/* TYPES */
-
 export type Point = [number, number];
 
 export type Box = [number, number, number, number];
@@ -26,8 +24,6 @@ export type Pen = Board & {
   arc(center: Point, r: number, angles: [number, number], thick: number, c: Color): void;
   image(x: number, y: number, w: number, h: number, pixels: Pixels): void;
 };
-
-/* FRAME */
 
 class Frame {
   x: number;
@@ -89,8 +85,6 @@ export type { Frame };
 export function frame(x: number, y: number, w: number, h: number): Frame {
   return new Frame(x, y, w, h);
 }
-
-/* BOARD */
 
 export const CLEAR = Object.freeze<Color>([0, 0, 0, 0]) as Color;
 

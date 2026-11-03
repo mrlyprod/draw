@@ -1,8 +1,6 @@
 import type { Pen } from "./frame.ts";
 import { type Color, clamp } from "./ink.ts";
 
-/* TYPES */
-
 export type Pixels = {
   shape: [number, number];
   colors: Uint8Array<ArrayBuffer> | Uint8ClampedArray<ArrayBuffer>;
@@ -15,8 +13,6 @@ export type Patch = Pixels & {
   blend(px: number, py: number, color: Color, cover?: number): void;
   paint(pen: Pen): void;
 };
-
-/* COVER */
 
 export function fold(pixels: Pixels): Uint8ClampedArray<ArrayBuffer> {
   const [h, w] = pixels.shape;

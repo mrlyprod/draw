@@ -4,8 +4,6 @@ import { fold } from "./pixels.ts";
 
 const TAU = 2 * Math.PI;
 
-/* TYPES */
-
 export type Png = (pixels: {
   shape: [number, number];
   colors: Uint8Array;
@@ -16,8 +14,6 @@ export type Svg = Pen & {
 };
 
 type Part = { x: number; y: number; w: number; h: number; pixels: { shape: [number, number]; colors: Uint8Array } };
-
-/* PAINT */
 
 const hex = (c: Color) => `#${[c[0], c[1], c[2]].map((v) => v.toString(16).padStart(2, "0")).join("")}`;
 const alpha = (key: string, c: Color) => (c[3] < 255 ? ` ${key}-opacity="${c[3] / 255}"` : "");
@@ -39,8 +35,6 @@ async function href(pixels: Part["pixels"], png: Png | undefined): Promise<strin
   if (typeof out === "string") return out;
   return `data:image/png;base64,${base64(out instanceof Uint8Array ? out : new Uint8Array(out))}`;
 }
-
-/* SVG */
 
 export function svg(width: number, height: number, ground: Color = CLEAR): Svg {
   const parts: (string | Part)[] = [];

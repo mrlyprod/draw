@@ -1,8 +1,6 @@
 import type { Frame, Pen, Point } from "./frame.ts";
 import type { Color } from "./ink.ts";
 
-/* RANGES */
-
 function span(values: ArrayLike<number>, n: number): [number, number] {
   let lo = Number.MAX_VALUE;
   let hi = -Number.MAX_VALUE;
@@ -12,8 +10,6 @@ function span(values: ArrayLike<number>, n: number): [number, number] {
   }
   return hi - lo < 1e-12 ? [lo - 0.5, hi + 0.5] : [lo, hi];
 }
-
-/* MARKS */
 
 export function bars(pen: Pen, frame: Frame, values: ArrayLike<number>, gap: number, color: Color): void {
   if (values.length === 0) return;

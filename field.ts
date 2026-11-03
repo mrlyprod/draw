@@ -3,8 +3,6 @@ import { type Color, clamp, Ramp } from "./ink.ts";
 
 export { patch } from "./pixels.ts";
 
-/* FIELDS */
-
 const byte = (v: number) => {
   const r = Math.round(v);
   return r > 0 ? Math.min(r, 255) : 0;

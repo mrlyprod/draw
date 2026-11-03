@@ -1,7 +1,5 @@
 import { palette } from "./palette.gen.js";
 
-/* TYPES */
-
 export type Name = keyof typeof palette;
 
 export type Role = "ground" | "bg" | "panel" | "deep" | "line" | "fg" | "dim" | "accent" | "on-accent";
@@ -9,8 +7,6 @@ export type Role = "ground" | "bg" | "panel" | "deep" | "line" | "fg" | "dim" | 
 export type Roles = Record<Name | Role, string>;
 
 export type Tint = { accent?: string; link?: string; theme?: "dark" | "light" };
-
-/* ROLES */
 
 export const dark: Roles = {
   ...palette,
@@ -37,8 +33,6 @@ export const light: Roles = {
   accent: palette.indigo,
   "on-accent": palette.white,
 };
-
-/* TINT */
 
 const HUES: Record<string, Name | undefined> = Object.fromEntries(
   (Object.entries(palette) as [Name, string][])

@@ -1,15 +1,11 @@
 import type { Frame, Pen, Point } from "./frame.ts";
 import type { Color } from "./ink.ts";
 
-/* TYPES */
-
 export type Vec3 = { x: number; y: number; z: number };
 
 export type Quad = { normal: Vec3; verts: Vec3[] };
 
 export type Face = { quad: Point[]; tone: number; depth: number };
-
-/* PROJECTION */
 
 const RATIO = 0.8660254037844386;
 
@@ -35,8 +31,6 @@ export const EDGES: readonly (readonly [number, number])[] = Object.freeze(
 export function project(x: number, y: number, z: number): Point {
   return [(x - y) * RATIO, (x + y) * 0.5 - z];
 }
-
-/* FACES */
 
 export function faces(quads: Quad[]): Face[] {
   const out: Face[] = [];
@@ -67,8 +61,6 @@ export function fit(list: Face[], frame: Frame): (p: Point) => Point {
   const oy = frame.y + (frame.h - sy * scale) / 2;
   return (p) => [ox + (p[0] - lx) * scale, oy + (p[1] - ly) * scale];
 }
-
-/* DRAWING */
 
 export function draw(pen: Pen, frame: Frame, quads: Quad[], shade: readonly Color[], edge: Color | null = null): void {
   const list = faces(quads);

@@ -2,13 +2,9 @@ import type { Frame, Pen, Point } from "./frame.ts";
 import type { Cell } from "./grid.ts";
 import type { Color } from "./ink.ts";
 
-/* TYPES */
-
 export type Rect = Pick<Frame, "x" | "y" | "w" | "h">;
 
 export type Brush<C> = { triangle(a: Point, b: Point, c: Point, color: C): void };
-
-/* GEOMETRY */
 
 const RATIO = 0.8660254037844386;
 
@@ -62,8 +58,6 @@ function fit(mesh: Point[][], frame: Rect): (p: Point) => Point {
   const oy = frame.y + (frame.h - sy * scale) / 2;
   return (p) => [ox + (p[0] - lx) * scale, oy + (p[1] - ly) * scale];
 }
-
-/* DRAWING */
 
 export function draw<C>(
   pen: Brush<C>,

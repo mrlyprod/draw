@@ -4,13 +4,9 @@ import type { Color } from "./ink.ts";
 const TAU = 2 * Math.PI;
 const MAX = Number.MAX_VALUE;
 
-/* TYPES */
-
 export type Raster = Pen & {
   pixels(): { shape: [number, number]; colors: Uint8ClampedArray<ArrayBuffer> };
 };
-
-/* GEOMETRY */
 
 const fmin = (a: number, b: number) => (b < a || Number.isNaN(a) ? b : a);
 const fmax = (a: number, b: number) => (b > a || Number.isNaN(a) ? b : a);
@@ -80,8 +76,6 @@ function bounds(pts: Point[]): [number, number, number, number] {
   }
   return [x0, y0, x1, y1];
 }
-
-/* RASTER */
 
 export function raster(width: number, height: number, ground: Color = CLEAR): Raster {
   const colors = new Uint8ClampedArray(width * height * 4);

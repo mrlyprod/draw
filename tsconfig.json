@@ -17,6 +17,6 @@
       "@mrlyprod/core": ["../core/js/index"]
     }
   },
-  "include": ["*.ts", "test/*.ts"],
+  "include": ["*.ts"],
   "exclude": ["**/node_modules/**"]
 }

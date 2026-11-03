@@ -1,13 +1,9 @@
 import type { Box, Frame, Pen } from "./frame.ts";
 import type { Color } from "./ink.ts";
 
-/* TYPES */
-
 export type Cell = { shape: number[]; types: ArrayLike<number> };
 
 export type Tensor = { shape: number[]; data: ArrayLike<number> };
-
-/* GRID */
 
 const round = (v: number) => (v < 0 ? -Math.round(-v) : Math.round(v));
 
@@ -64,8 +60,6 @@ export class Grid {
     }
   }
 }
-
-/* MASKS */
 
 export const LOGO = Object.freeze(["11111", "10101", "11111", "10101", "11111"]);
 
