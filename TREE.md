@@ -1,7 +1,7 @@
 # DRAW
 
 ```
-draw/  23 files
+draw/  24 files
 ├── .gitignore
 ├── CONTRIBUTING.md
 ├── LICENSE
@@ -20,6 +20,7 @@ draw/  23 files
 ├── package.json
 ├── palette.gen.js
 ├── pixels.ts
+├── plate.ts
 ├── plot.ts
 ├── raster.ts
 ├── svg.ts
